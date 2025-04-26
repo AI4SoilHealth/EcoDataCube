@@ -193,7 +193,7 @@ class $data {
         axis: 'x',
       },
       animation: {
-        duration: 150
+        duration: 0
       },
       scales: {
 
@@ -268,6 +268,8 @@ class $data {
         data: []
       };
 
+      console.log(data)
+
       data.map(obj => {
         if (obj.layer.indexOf('b0cm..20cm') > -1) {
           b0cm.data.push(obj.value)
@@ -287,7 +289,7 @@ class $data {
       })
 
       return {
-        labels: [...new Set(data.map(obj => obj.date_label))],
+        labels: layerObj.rangeLabels,
         datasets: [b0cm, b20cm, b50cm, b100cm]
       }
 
@@ -302,13 +304,13 @@ class $data {
         data.map((obj) => {
           if (obj.layer.indexOf(r) > -1) {
             labels.push(layerObj.rangeLabels[i]);
-            formated.push(obj.value);
+            formated.push({x: layerObj.rangeLabels[i], y: obj.value});
           }
         })
       });
 
       return {
-        labels,
+        labels: layerObj.rangeLabels,
         datasets: [{
           label: layerObj.title,
           data: formated,
@@ -332,13 +334,13 @@ class $data {
       data.map((obj) => {
         if (obj.layer.indexOf(r) > -1) {
           labels.push(layerObj.rangeLabels[i]);
-          formated.push(obj.value);
+          formated.push({x: layerObj.rangeLabels[i], y: obj.value});
         }
       })
     });
 
     return {
-      labels: data.length === 1 ? [data[0]?.date_label] : labels,
+      labels: data.length === 1 ? [data[0]?.date_label] : layerObj.rangeLabels,
       datasets: [{
         label: layerObj.title,
         data: data.length === 1 ? [data[0]?.value] : formated,

@@ -18,13 +18,16 @@ function Query(props) {
   const { layer, layers } = useContext(AppContext);
   const layerObj = layers.find(l => l.title === layer);
 
-  const [bar, setBar] = useState(false);
+  const [bar, setBar] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [legend, setLegend] = useState([]);
 
   const onSetData = (data) => {
+    // let sorted = data.sort((a,b) => {
+    //   return 
+    // });
     try {
       setData(data.map((obj) => ({...obj, value: layerObj.transformFunction(obj.value)})))
     } catch (error) {
@@ -55,8 +58,6 @@ function Query(props) {
           onSetData(data);
         },
         onFormatValue: (val) => {
-          console.log(val);
-          console.log('====================')
           let formated = '';
 
           if (val[0] === ',' || val[val.length - 1] === ',') {
@@ -76,6 +77,7 @@ function Query(props) {
           return JSON.parse(`[${formated}]`);
         },
         onEnd: (data) => {
+      
           setLoading(false)
           onSetData(data);
         }
