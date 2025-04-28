@@ -67,7 +67,7 @@ function GithubTab(props) {
 
 
   return (
-    <Stack sx={{height: '100%'}} spacing={3}>
+    <Stack sx={{height: '100%', width: '100%'}} spacing={3}>
       <Typography textAlign="center" variant="h6" color="secondary">Support</Typography>
 
       <Stack direction="row" justifyContent="space-around" alignItems="center" spacing={2}>

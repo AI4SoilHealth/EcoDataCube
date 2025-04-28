@@ -98,6 +98,37 @@ class $data {
       .catch(err => { throw err })
   }
 
+  getZoteroPublications() {
+    return axios.get('https://api.zotero.org/groups/5969879/items/top?direction=desc&format=json&sort=title')
+      .then(result => {
+        console.log(result.data);
+
+        return result.data.map(obj => ({
+          title: obj.data.title,
+          doi: obj.data.DOI,
+          date: moment(obj.data.dateModified).format('MMM DD, YYYY'),
+          creators: obj.data.creators.map(obj => `${obj.firstName} ${obj.lastName}`).join(', '),
+          zoteroLink: obj.links.alternate.href
+        }))
+      })
+      .catch(err => {throw err})
+  }
+
+  getZenodoPublications() {
+    return axios.get('https://zenodo.org/api/communities/d51d85c3-64b3-44aa-8b30-d0cc34cc015a/records?q=&sort=newest&page=1&size=10')
+      .then(result => {
+        console.log(result.data)
+        return result.data.hits.hits.map(obj => ({
+          title: obj.title,
+          doi: obj.doi,
+          date: moment(obj.metadata.publication_date).format('MMM DD, YYYY'),
+          creators: obj.metadata.creators.map(obj => obj.name).join(', '),
+          zenodoLink: obj.links.latest_html
+        }))
+      })
+      .catch(err => {throw err})
+  }
+
   getLegend(url) {
     return axios.get(url)
       .then(result => {

@@ -41,7 +41,7 @@ function DataAccess(props) {
         To access data from R using the terra package please use e.g.:
         <br />
         <br />
-        <Box component={'code'} sx={{ fontSize: '12px !important', wordBreak: 'break-all', fontFamily: 'monospace !important' }}>library(terra) in.tif = "/vsicurl/https://s3.ecodatacube.eu/arco/lcv_landcover.hcl_lucas.corine.rf_p_30m_0..0cm_2019_eumap_epsg3035_v0.1.tif" tif = rast(in.tif)</Box>
+        <Box component={'code'} sx={{ fontSize: '12px !important', wordBreak: 'break-all', fontFamily: 'monospace !important' }}>library(terra) <br/> in.tif = "/vsicurl/https://s3.ecodatacube.eu/arco/lcv_landcover.hcl_lucas.corine.rf_p_30m_0..0cm_2019_eumap_epsg3035_v0.1.tif" <br/> tif = rast(in.tif)</Box>
         <br />
         <br />
         From here you can use any native operation e.g. to crop some polygon or resample / aggregate values.
