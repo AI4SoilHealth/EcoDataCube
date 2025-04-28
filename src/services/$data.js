@@ -193,7 +193,7 @@ class $data {
         axis: 'x',
       },
       animation: {
-        duration: 0
+        duration: 150
       },
       scales: {
 
@@ -297,14 +297,12 @@ class $data {
 
 
     if (layerObj.isVars) {
-      let labels = []
       let formated = [];
 
       layerObj.range.map((r, i) => {
         data.map((obj) => {
           if (obj.layer.indexOf(r) > -1) {
-            labels.push(layerObj.rangeLabels[i]);
-            formated.push({x: layerObj.rangeLabels[i], y: obj.value});
+            formated.push(obj.value);
           }
         })
       });
@@ -333,7 +331,6 @@ class $data {
     layerObj.range.map((r, i) => {
       data.map((obj) => {
         if (obj.layer.indexOf(r) > -1) {
-          labels.push(layerObj.rangeLabels[i]);
           formated.push({x: layerObj.rangeLabels[i], y: obj.value});
         }
       })
