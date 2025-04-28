@@ -50,7 +50,7 @@ function ZenodoTab() {
 
   return (
     <Stack sx={{height: '100%', width: '100%'}} spacing={3}>
-      <Typography textAlign="center" variant="h6" color="secondary" >Zenodo Publications</Typography>
+      <Typography textAlign="center" variant="h6" color="secondary" >Zenodo Records</Typography>
 
       <List sx={{textAlign: 'center'}} dense>
         {renderPublications()}
