@@ -1,4 +1,4 @@
-import { Add, Bookmark, Fullscreen, GitHub, Home, Layers, Map, MyLocation, Public, QuestionMark, Remove, Share, } from "@mui/icons-material";
+import { Add, Bookmark, Fullscreen, GitHub, Home, Layers, Map, MyLocation, PieChart, Public, QuestionMark, Remove, Share, } from "@mui/icons-material";
 import { ButtonGroup, IconButton, Paper, useTheme } from "@mui/material";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext";
@@ -83,6 +83,14 @@ function NavigationBar() {
         },
         background: tab === 'help' ? theme.palette.selected.main : 'transparent', borderRadius: 0
       }} color="secondary"><QuestionMark color="secondary" /></IconButton>
+      <IconButton onClick={() => {
+        setState(current => ({...current, statsModal: true}));
+      }} sx={{
+        '&:hover': {
+          background: theme.palette.selected.main + '99'
+        },
+        background: 'transparent', borderRadius: 0
+      }} color="secondary"><PieChart /></IconButton>
     </ButtonGroup>
   )
 }

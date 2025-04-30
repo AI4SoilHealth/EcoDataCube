@@ -5,5 +5,6 @@ export const URL = {
   QUERY: api + 'point-query/',
   QUERY_STREAM: api + 'pq2/',
   BASE_WMS: 'https://geoserver.ecodatacube.eu/geoserver/edc/wms/',
-  BASE_STYLE: 'https://geoserver.ecodatacube.eu/geoserver/wms/?service=WMS&version=1.1.0&request=GetLegendGraphic&format=application/json&layer='
+  BASE_STYLE: 'https://geoserver.ecodatacube.eu/geoserver/wms/?service=WMS&version=1.1.0&request=GetLegendGraphic&format=application/json&layer=',
+  STATS: api + 'stats',
 };

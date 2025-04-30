@@ -21,6 +21,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import StatsModal from './components/stats/StatsModal';
 
 const palette = {
   palette: {
@@ -69,13 +70,13 @@ function App() {
     credits: false,
     sidebar: !isEmbedd && window.innerWidth > 600 ? initState.sidebar : false,
     layers: [],
-    layers2: []
+    layers2: [],
   });
 
   const getData = async () => {
+   
+
     try {
-
-
       let total = await $data.getLayers(state.layer, state.opacity);
       let data = total.map(arr => arr[0]);
       let data2 = total.map(arr => arr[1]);
@@ -257,8 +258,9 @@ function App() {
               </>}
 
 
-          {state.about && <AboutModal open={state.about} setAbout={(bool) => setState(current => ({ ...current, about: bool }))} />}
-          {state.credits && <CreditsModal open={state.credits} setCredits={(bool) => setState(current => ({ ...current, credits: bool }))} />}
+              {state.about && <AboutModal open={state.about} setAbout={(bool) => setState(current => ({ ...current, about: bool }))} />}
+              {state.credits && <CreditsModal open={state.credits} setCredits={(bool) => setState(current => ({ ...current, credits: bool }))} />}
+              {state.statsModal && <StatsModal open={state.statsModal} onClose={() => setState(current => ({...current, statsModal: false}))} />}
             </>
           }></Route>
 
@@ -272,7 +274,7 @@ function App() {
                 <Timeline />
 
                 <Stack className="backdrop-blur" component={Paper} elevation={5} sx={{ borderRadius: 0, padding: '10px', background: palette.palette.primary.main, position: 'fixed', top: '0px', left: '50%', transform: 'translateX(-50%)', width: '100%', zIndex: 99999 }}>
-                  <a style={{margin: '0 auto'}} href={"https://ecodatacube.eu/" + window.location.search} target="_blank">
+                  <a style={{ margin: '0 auto' }} href={"https://ecodatacube.eu/" + window.location.search} target="_blank">
                     <img src="/ecodatacube_logo_europe.svg" width="250" />
                   </a>
                 </Stack>

@@ -7,6 +7,12 @@ import { toLonLat } from "ol/proj";
 
 class $data {
 
+  getStats() {
+    return axios.get(URL.STATS)
+      .then(result => result.data)
+      .catch(err => {throw err})
+  }
+
   getLayers(active, opacity) {
     return axios.get(URL.LAYERS)
       .then(result => {

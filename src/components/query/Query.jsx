@@ -47,7 +47,8 @@ function Query(props) {
 
       // const data = await $data.pointQuery(layerObj.queryUrl, props.coordinates);
       $stream.getStream({
-        url: layerObj.queryUrl.replace('__LAT__', coords[1]).replace('__LON__', coords[0]),
+        url: layerObj.queryUrl.replace('__LAT__', coords[1]).replace('__LON__', coords[0] + 
+        '&title=' + layerObj.title),
         settings: {
           signal: streamController.signal,
         },
