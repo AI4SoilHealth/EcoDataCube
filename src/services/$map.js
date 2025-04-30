@@ -209,7 +209,7 @@ class $map {
         declutter: true,
         visible: active === 'lcv',
         source: new PMTilesVectorSource({
-          url: 'https://s3.ecodatacube.eu/arco/veg_tree.species_postprocessed.point.samples_eu.pmtiles'
+          url: 'https://s3.ecodatacube.eu/arco/lcv_landcover_lucas.corine.samples_c_30m_0..0cm_2000..2019_eu_v0.1.pmtiles'
         }),
         style: (feature) => {
           if (lcvStyleCache[feature.get('id')]) {

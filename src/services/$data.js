@@ -9,7 +9,7 @@ class $data {
 
   getStats() {
     return axios.get(URL.STATS)
-      .then(result => result.data)
+      .then(result => result.data.sort((a,b) => b.access_count - a.access_count))
       .catch(err => {throw err})
   }
 
