@@ -46,12 +46,12 @@ function StatsModal({ open, onClose }) {
         </Stack>
       </DialogTitle>
       <DialogContent className="backdrop-blur" sx={{ background: 'transparent' }}>
-        <Stack sx={{ minHeight: '400px', width: '100%' }} direction="row" alignItems="flex-start" spacing={2}>
+        <Stack sx={{ minHeight: '400px', width: '100%' }} direction={{xs: "column", sm: 'row'}} alignItems="flex-start" spacing={2}>
           {loading && <LinearProgress sx={{ textAlign: 'center', width: '100%' }} variant="indeterminate" color="primary" />}
           {!loading && layer && <>
             <StatsMap layer={layer} />
 
-            <Stack spacing={1} sx={{ width: '30%' }}>
+            <Stack spacing={1} sx={{ width: {xs: '100%', sm: '30%'} }}>
               <Typography sx={{ pl: '15px' }} fontWeight="bold" color="secondary">Most Visited Datasets</Typography>
               <List dense>
                 {stats.map((obj, index) => {

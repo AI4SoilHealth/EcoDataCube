@@ -10,11 +10,14 @@ import { PMTilesVectorSource } from "ol-pmtiles";
 import Style from "ol/style/Style";
 import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
+import Circle from "ol/style/Circle";
 import Text from "ol/style/Text";
 
 const nutsStyleCache = {};
 
 const fieldStyleCache = {};
+const treeStyleCache = {};
+const lcvStyleCache = {};
 
 class $map {
   constructor() {
@@ -93,6 +96,7 @@ class $map {
 
   generateVectorLayers = (active) => {
     return [
+
       new VectorImageLayer({
         name: 'nuts',
         zIndex: 3,
@@ -165,6 +169,67 @@ class $map {
             })
 
             return fieldStyleCache[feature.get('id')];
+          }
+
+        },
+      }),
+      new VectorTileLayer({
+        name: 'tree',
+        zIndex: 3,
+        declutter: true,
+        visible: active === 'tree',
+        source: new PMTilesVectorSource({
+          url: 'https://s3.ecodatacube.eu/arco/veg_tree.species_postprocessed.point.samples_eu.pmtiles'
+        }),
+        style: (feature) => {
+          if (treeStyleCache[feature.get('id')]) {
+            return treeStyleCache[feature.get('id')];
+          } else {
+            treeStyleCache[feature.get('id')] = new Style({
+              image: new Circle({
+                fill: new Fill({
+                  color: '#EB4850',
+                }),
+                stroke: new Stroke({
+                  color: '#fff',
+                  width: 2
+                }),
+                radius: 4
+              })
+            })
+
+            return treeStyleCache[feature.get('id')];
+          }
+
+        },
+      }),
+      new VectorTileLayer({
+        name: 'lcv',
+        zIndex: 3,
+        declutter: true,
+        visible: active === 'lcv',
+        source: new PMTilesVectorSource({
+          url: 'https://s3.ecodatacube.eu/arco/veg_tree.species_postprocessed.point.samples_eu.pmtiles'
+        }),
+        style: (feature) => {
+          if (lcvStyleCache[feature.get('id')]) {
+            return lcvStyleCache[feature.get('id')];
+          } else {
+            lcvStyleCache[feature.get('id')] = new Style({
+              
+              image: new Circle({
+                fill: new Fill({
+                  color: '#EB4850',
+                }),
+                stroke: new Stroke({
+                  color: '#fff',
+                  width: 2
+                }),
+                radius: 4
+              })
+            })
+
+            return lcvStyleCache[feature.get('id')];
           }
 
         },

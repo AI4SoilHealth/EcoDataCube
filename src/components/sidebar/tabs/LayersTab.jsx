@@ -137,9 +137,9 @@ function LayersTab(props) {
             secondary={
               item.description.split(" ").length > 25
                 ? item.description
-                    .split(" ")
-                    .filter((w, i) => i <= 25)
-                    .join(" ") + "..."
+                  .split(" ")
+                  .filter((w, i) => i <= 25)
+                  .join(" ") + "..."
                 : item.description
             }
           ></ListItemText>
@@ -183,16 +183,16 @@ function LayersTab(props) {
       </Stack>
       {renderContent()}
 
-      <Stack sx={{padding: '5px', marginTop: '20px', paddingLeft: '10px'}}>
-        <Divider sx={{background: '#fff', marginBottom: '20px'}} />
-        <Typography color="secondary">
-          <strong>Regions & Field Boundaries</strong>
+      <Stack sx={{ padding: '5px', marginTop: '20px', paddingLeft: '10px' }}>
+        <Divider sx={{ background: '#fff', marginBottom: '20px' }} />
+        <Typography sx={{width: '95%'}} color="secondary">
+          <strong >Regions, Field Boundaries & Training Data</strong>
         </Typography>
         <FormControl color="secondary">
           <RadioGroup aria-label="overlay" name="overlays" value={"nuts"}>
             <FormControlLabel
               color="secondary"
-              sx={{'& span': { color: '#fff' },  '& .MuiTypography-root': {fontSize: '14px !important'}}}
+              sx={{ '& span': { color: '#fff' }, '& .MuiTypography-root': { fontSize: '14px !important' } }}
               value="nuts"
               checked={vector === 'nuts'}
               control={<Radio color="secondary" />}
@@ -209,10 +209,10 @@ function LayersTab(props) {
                 <Link target="_blank" href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics" color="selected">(Source)</Link>
               </Stack>}
             />
-           
+
             <FormControlLabel
               color="secondary"
-              sx={{'& span': { color: '#fff' }, '& .MuiTypography-root': {fontSize: '14px !important'}}}
+              sx={{ '& span': { color: '#fff' }, '& .MuiTypography-root': { fontSize: '14px !important' } }}
               value="field"
               checked={vector === 'field'}
               onChange={(e, checked) => {
@@ -223,17 +223,57 @@ function LayersTab(props) {
               }}
               control={<Radio color="secondary" />}
               label={<Stack direction="row" alignItems="center" spacing={2}>
-              <Typography color="secondary">
-                Field Boundaries
-              </Typography>
-              <Link target="_blank" href="https://doi.org/10.5281/zenodo.14229032" color="selected">(Source)</Link>
-            </Stack>}
+                <Typography color="secondary">
+                  Field Boundaries
+                </Typography>
+                <Link target="_blank" href="https://doi.org/10.5281/zenodo.14229032" color="selected">(Source)</Link>
+              </Stack>}
+            />
+
+            <FormControlLabel
+              color="secondary"
+              sx={{ '& span': { color: '#fff' }, '& .MuiTypography-root': { fontSize: '14px !important' } }}
+              value="lcv"
+              checked={vector === 'lcv'}
+              onChange={(e, checked) => {
+                setState((current) => ({
+                  ...current,
+                  vector: e.target.value,
+                }));
+              }}
+              control={<Radio color="secondary" />}
+              label={<Stack direction="row" alignItems="center" spacing={2}>
+                <Typography color="secondary">
+                  Land Cover Samples
+                </Typography>
+                <Link target="_blank" href="https://doi.org/10.7717/peerj.13573" color="selected">(Source)</Link>
+              </Stack>}
+            />
+
+            <FormControlLabel
+              color="secondary"
+              sx={{ '& span': { color: '#fff' }, '& .MuiTypography-root': { fontSize: '14px !important' } }}
+              value="tree"
+              checked={vector === 'tree'}
+              onChange={(e, checked) => {
+                setState((current) => ({
+                  ...current,
+                  vector: e.target.value,
+                }));
+              }}
+              control={<Radio color="secondary" />}
+              label={<Stack direction="row" alignItems="center" spacing={2}>
+                <Typography color="secondary">
+                  Tree Species Samples
+                </Typography>
+                <Link target="_blank" href="https://doi.org/10.7717/peerj.13728" color="selected">(Source)</Link>
+              </Stack>}
             />
             <FormControlLabel
               color="secondary"
               value="off"
               checked={vector === 'off'}
-              sx={{'& span': { color: '#fff' },  '& .MuiTypography-root': {fontSize: '14px !important'}}}
+              sx={{ '& span': { color: '#fff' }, '& .MuiTypography-root': { fontSize: '14px !important' } }}
               onChange={(e, checked) => {
                 setState((current) => ({
                   ...current,

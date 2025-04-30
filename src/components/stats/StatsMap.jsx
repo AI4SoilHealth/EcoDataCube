@@ -6,7 +6,7 @@ import HeatMap from "ol/layer/Heatmap";
 import { AppContext } from "../../AppContext";
 import { Feature, View } from "ol";
 import { fromLonLat } from "ol/proj";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import OSM from "ol/source/OSM";
 import { Point } from "ol/geom";
 
@@ -63,7 +63,7 @@ function StatsMap(props) {
   }, [JSON.stringify(props.layer.layer)])
 
   return (
-    <div style={{ height: '400px', width: '70%' }} ref={mapElement}></div>
+    <Box sx={{ height: '400px', width: {xs: '100%', sm: '70%'} }} ref={mapElement}></Box>
   )
 
 }
