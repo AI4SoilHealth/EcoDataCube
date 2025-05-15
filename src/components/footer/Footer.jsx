@@ -16,7 +16,7 @@ function Footer(props) {
       <a style={{fontSize: '12px', fontWeight: 'bold', color: theme.palette.selected.main, textDecoration: 'none'}} href="https://stac.ecodatacube.eu/" target="_blank">STAC</a>
       <a onClick={() => setState(current => ({...current, about: true}))} style={{fontSize: '12px', fontWeight: 'bold', color: theme.palette.selected.main, textDecoration: 'none', cursor: 'pointer'}}>About</a>
       <a onClick={() => setState(current => ({...current, credits: true}))} style={{fontSize: '12px', fontWeight: 'bold', color: theme.palette.selected.main, textDecoration: 'none', cursor: 'pointer'}}>Credits</a>
-      <span style={{fontSize: '12px', fontWeight: 'bold', color: '#fff'}}>Powered by: <a style={{color: theme.palette.selected.main, textDecoration: 'none'}} href="https://gilab.rs/" target="_blank">GILAB</a></span>
+      <span style={{fontSize: '12px', fontWeight: 'bold', color: '#fff'}}>Powered by: <a style={{color: theme.palette.selected.main, textDecoration: 'none'}} href="https://gilab.rs/" target="_blank">GILAB</a> & <a style={{color: theme.palette.selected.main, textDecoration: 'none'}} href="https://opengeohub.org/" target="_blank">OpenGeoHub</a></span>
 
       </Stack>
     </Stack>

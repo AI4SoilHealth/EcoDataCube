@@ -23,14 +23,13 @@ function CreditsModal({ open, setCredits }) {
       </DialogTitle>
       <DialogContent className="backdrop-blur" sx={{ background: 'transparent' }}>
         <Stack spacing={2}>
-          <div><a href="https://ec.europa.eu/inea/en/connecting-europe-facility/cef-telecom/2018-eu-ia-0095" target="_blank">
+          <div>
             <img src="/cef_logo.png" width="100%" />
-          </a>
           </div>
 
-          <Link href="https://ec.europa.eu/inea/en/connecting-europe-facility/cef-telecom/2018-eu-ia-0095" color="selected" fontWeight="bold">
+          <Typography color="selected" fontWeight="bold">
             CEF Telecom project 2018-EU-IA-0095. This project is co-financed by the European Union.
-          </Link>
+          </Typography>
 
 
 
