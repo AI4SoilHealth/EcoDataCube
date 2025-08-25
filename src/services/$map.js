@@ -52,17 +52,16 @@ class $map {
 
       ,
       new TileLayer({
-        name: 'bing',
+        name: 'esri',
         zIndex: 1,
         preload: Infinity,
-        source: new BingMaps({
-          key: 'Am5pr8Q-dkmubEMkSwAsIfSkH8UrJjTHt-rMwQUfjjaG5ioU5prI9XSVfT9hjA8G',
-          imagerySet: 'AerialWithLabels',
+        source: new XYZ({
+          url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+          crossOrigin: 'anonymous',
           transition: 0
 
-          // hidpi: OL_HAS.DEVICE_PIXEL_RATIO >= 2
         }),
-        visible: 'bing' === active
+        visible: 'esri' === active
       }),
       new TileLayer({
         name: 'otm',

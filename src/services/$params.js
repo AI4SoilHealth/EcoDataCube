@@ -113,7 +113,7 @@ class $params {
 			return defaultState.base
 		}
 
-		if(['osm', 'osm_gray', 'bing', 'otm'].indexOf(decodeURIComponent(val)) === -1) {
+		if(['osm', 'osm_gray', 'esri', 'otm'].indexOf(decodeURIComponent(val)) === -1) {
 			return defaultState.base
 		}
 

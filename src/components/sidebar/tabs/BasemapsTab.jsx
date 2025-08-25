@@ -9,12 +9,14 @@ function BasemapsTab(props) {
   return (
     <Stack spacing={2}>
       <Stack direction="row" spacing={2}>
-        <Paper onClick={() => setState(current => ({...current, base: 'bing'}))} elevation={3} sx={{background: base === 'bing' ? theme.palette.selected.main : '#fff', padding: '3px', width: '96px', height: '86px', cursor: 'pointer' }}>
+        <Paper onClick={() => setState(current => ({...current, base: 'esri'}))} elevation={3} sx={{background: base === 'esri' ? theme.palette.selected.main : '#fff', padding: '3px', width: '96px', height: '86px', cursor: 'pointer' }}>
           <img src={'/bing_overview.png'} style={{ width: '90px', height: '80px' }} />
         </Paper>
         <Stack>
-          <Typography fontSize="12px" color="secondary"><strong>BingMaps (Aerial)</strong></Typography>
-          <Typography fontSize="11px" color="secondary">© 2025 Microsoft Corporation © 2025 Maxar © CNES(2025) Distribution Airbus DS © 2025 TomTom <a style={{color: theme.palette.selected.main}} href="https://www.microsoft.com/maps/product/terms.html" target="_blank">Terms of Use</a></Typography>
+          <Typography fontSize="12px" color="secondary"><strong>ESRI World Imagery</strong></Typography>
+          <Typography fontSize="11px" color="secondary">Tiles © <a style={{color: theme.palette.selected.main}} target="_blank" href="https://www.esri.com/">Esri</a>,
+                  <a target="_blank" style={{color: theme.palette.selected.main}} href="https://www.esri.com/en-us/legal/terms/data-attributions">
+                  Maxar, Earthstar Geographics, GIS User Community</a></Typography>
         </Stack>
       </Stack>
       <Stack direction="row" spacing={2}>
