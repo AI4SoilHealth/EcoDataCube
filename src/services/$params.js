@@ -61,10 +61,12 @@ class $params {
 		let output = {};
 
 		arr.map(el => {
+			
 			let name = el.split('=')[0];
 			let value = el.split('=')[1];
 
 			if(name === 'opacity') {
+				console.log(parseInt(value))
 				value = parseInt(value); 
 			}
 
@@ -76,7 +78,7 @@ class $params {
 				value = value.split(',').map(v => parseFloat(v));
 			}
 
-			if(name && value) {
+			if(name && (value || value === 0)) {
 				output[name] = value;
 			}
 		})
@@ -185,7 +187,8 @@ class $params {
 	}
 
 	_validateOpacity(val) {
-		if(!val) {
+		
+		if(!val && val !== 0) {
 			return defaultState.opacity
 		}
 

@@ -12,7 +12,18 @@ import Fill from "ol/style/Fill";
 import Stroke from "ol/style/Stroke";
 import Circle from "ol/style/Circle";
 import Text from "ol/style/Text";
-
+export const cadastreCountries = [
+  "lichtenstein",
+  "luxembourg",
+  "malta",
+  "netherlands",
+  "portugal",
+  "norway",
+  "belgium",
+  "iceland",
+  "estonia",
+  "denmark"
+]
 const nutsStyleCache = {};
 
 const fieldStyleCache = {};
@@ -32,7 +43,7 @@ class $map {
         name: 'osm',
         zIndex: 1,
         preload: Infinity,
-        
+
         source: new OSM({
           transition: 0
         }),
@@ -215,7 +226,7 @@ class $map {
             return lcvStyleCache[feature.get('id')];
           } else {
             lcvStyleCache[feature.get('id')] = new Style({
-              
+
               image: new Circle({
                 fill: new Fill({
                   color: '#EB4850',
@@ -232,8 +243,32 @@ class $map {
           }
 
         },
-      })
+      }),
+      ...this.generateCadastreVectors(active)
     ]
+  }
+
+  generateCadastreVectors(active) {
+    return cadastreCountries.map(name => (
+      new VectorTileLayer({
+        name: name,
+        zIndex: 3,
+        declutter: true,
+        visible: active === name,
+        source: new PMTilesVectorSource({
+          url: `https://s3.ecodatacube.eu/ifad/eu_cadaster/${name}_cp_CadastralParcel.pmtiles`
+        }),
+        style: new Style({
+          fill: new Fill({
+            color: 'transparent',
+          }),
+          stroke: new Stroke({
+            color: '#EB4850',
+            width: 2
+          }),
+        })
+      })
+    ))
   }
 
   setBase(base, list) {

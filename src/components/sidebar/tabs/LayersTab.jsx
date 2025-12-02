@@ -23,6 +23,7 @@ import { AppContext } from "../../../AppContext";
 import $data from "../../../services/$data";
 import WmsLayer from "../../../models/WmsLayer";
 import { ExpandMore } from "@mui/icons-material";
+import { cadastreCountries } from "../../../services/$map";
 
 function LayersTab(props) {
   const themes = useRef({ ...WmsLayer.themesEmpty });
@@ -185,7 +186,7 @@ function LayersTab(props) {
 
       <Stack sx={{ padding: '5px', marginTop: '20px', paddingLeft: '10px' }}>
         <Divider sx={{ background: '#fff', marginBottom: '20px' }} />
-        <Typography sx={{width: '95%'}} color="secondary">
+        <Typography sx={{ width: '95%' }} color="secondary">
           <strong >Regions, Field Boundaries & Training Data</strong>
         </Typography>
         <FormControl color="secondary">
@@ -269,6 +270,7 @@ function LayersTab(props) {
                 <Link target="_blank" href="https://doi.org/10.7717/peerj.13728" color="selected">(Source)</Link>
               </Stack>}
             />
+            {<CadastreRadioButtons setState={setState} vector={vector} />}
             <FormControlLabel
               color="secondary"
               value="off"
@@ -283,6 +285,7 @@ function LayersTab(props) {
               control={<Radio color="secondary" />}
               label="Off"
             />
+
           </RadioGroup>
         </FormControl>
       </Stack>
@@ -291,3 +294,24 @@ function LayersTab(props) {
 }
 
 export default LayersTab;
+
+
+function CadastreRadioButtons({ setState, vector }) {
+  return cadastreCountries.map((country, index) => (
+    <FormControlLabel
+      key={index}
+      color="secondary"
+      value={country}
+      checked={vector === country}
+      sx={{ '& span': { color: '#fff' }, '& .MuiTypography-root': { fontSize: '14px !important' } }}
+      onChange={(e, checked) => {
+        setState((current) => ({
+          ...current,
+          vector: e.target.value,
+        }));
+      }}
+      control={<Radio color="secondary" />}
+      label={country.slice(0, 1).toUpperCase() + country.slice(1) + ' Cadastre'}
+    />
+  ));
+}

@@ -13,7 +13,7 @@ function AboutTab(props) {
               Witjes, M., Parente, L., Križan, J., Hengl, T., & Antonić, L. (2023). Ecodatacube. eu: analysis-ready open environmental data cube for Europe. PeerJ, 11, e15478.  <Link href="https://doi.org/10.7717/peerj.15478" target="_blank" color="selected">https://doi.org/10.7717/peerj.15478</Link>.
             </li>
             <li>
-            Tian, X., Consoli, D., Witjes, M., Schneider, F., Parente, L., Şahin, M., ... & Hengl, T. (2024). Time-series of Landsat-based bi-monthly and annual spectral indices for continental Europe for 2000–2022. Earth System Science Data Discussions, 2024, 1-49.  <Link href="https://doi.org/10.5194/essd-17-741-2025" target="_blank" color="selected">https://doi.org/10.5194/essd-17-741-2025</Link>.
+              Tian, X., Consoli, D., Witjes, M., Schneider, F., Parente, L., Şahin, M., ... & Hengl, T. (2024). Time-series of Landsat-based bi-monthly and annual spectral indices for continental Europe for 2000–2022. Earth System Science Data Discussions, 2024, 1-49.  <Link href="https://doi.org/10.5194/essd-17-741-2025" target="_blank" color="selected">https://doi.org/10.5194/essd-17-741-2025</Link>.
             </li>
           </ul>
         </Typography>
@@ -32,6 +32,25 @@ function AboutTab(props) {
           The AI4SoilHealth project has received funding from the European Union's Horizon Europe research and innovation programme under grant agreement <Link href="https://cordis.europa.eu/project/id/101086179" target="_blank" color="selected">No. 101086179</Link>.
         </Typography>
       </Stack>
+
+      <Stack spacing={1}>
+        <Stack direction="row" spacing={2} alignItems="center">
+          <Link href="https://www.ukri.org/" target="_blank"><img src="/ukri.png" width="240" /></Link>
+          <Link href="https://eidc.ac.uk/" target="_blank"><img src="https://eidc.ac.uk/sites/default/files/UKCEH_EIDC_logo_CMYK_small.png" width="240" /></Link>
+        </Stack>
+        <Typography color="secondary" fontSize={'12px'}>
+          This work has received funding from <Link href="https://www.ukri.org/apply-for-funding/horizon-europe/" target="_blank" color="selected" >UK Research and Innovation (UKRI) under the UK government’s Horizon Europe funding </Link> guarantee [grant numbers 10053484, 1005216, 1006329].        </Typography>
+
+        <Typography color="secondary" fontSize={'12px'}>
+          <Link href="https://catalogue.ceh.ac.uk/documents/79669141-cde5-49f0-b24d-f3c6a1a52db8" target="_blank" color="selected">Countryside Survey</Link>: Emmett, B.A.; Reynolds, B.; Chamberlain, P.M.; Rowe, E.; Spurgeon, D.; Brittain, S.A.; Frogbrook, Z.; Hughes, S.; Lawlor, A.J.; Poskitt, J.; Potter, E.; Robinson, D.A.; Scott, A.; Wood, C.M.; Woods, C. (2016). Soil physico-chemical properties 2007 [Countryside Survey] . NERC Environmental Information Data Centre. <Link href="https://doi.org/10.5285/79669141-cde5-49f0-b24d-f3c6a1a52db8" target="_blank" color="selected">https://doi.org/10.5285/79669141-cde5-49f0-b24d-f3c6a1a52db8</Link>
+        </Typography>
+
+        <Typography color="secondary" fontSize={'12px'}>
+           <Link href="https://catalogue.ceh.ac.uk/documents/0fa51dc6-1537-4ad6-9d06-e476c137ed09" target="_blank" color="selected">Welsh Government soil data</Link>: Robinson, D.A.; Astbury, S.; Barrett, G.; Burden, A.; Carter, H.; Emmett, B.A.; Garbutt, A.; Giampieri, C.; Hall, J.; Henrys, P.A.; Hughes, S.; Hunt, A.; Jarvis, S.G.; Jones, D.L.; Keenan, P.; Lebron, I.; Nunez, D.; Owen, A.; Patel, M.; Pereira, M.G.; Seaton, F.; Sharps, K.; Tanna, B.; Thompson, N.; Williams, B.; Wood, C.M. (2019). Topsoil physico-chemical properties from the Glastir Monitoring and Evaluation Programme, Wales 2013-2016. NERC Environmental Information Data Centre. <Link href="https://doi.org/10.5285/0fa51dc6-1537-4ad6-9d06-e476c137ed09" target="_blank" color="selected">https://doi.org/10.5285/0fa51dc6-1537-4ad6-9d06-e476c137ed09</Link>
+        </Typography>
+
+      </Stack>
+
 
       <Stack spacing={1}>
         <Typography color="secondary" fontSize={'12px'}>
