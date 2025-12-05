@@ -9,8 +9,8 @@ class $data {
 
   getStats() {
     return axios.get(URL.STATS)
-      .then(result => result.data.sort((a,b) => b.access_count - a.access_count))
-      .catch(err => {throw err})
+      .then(result => result.data.sort((a, b) => b.access_count - a.access_count))
+      .catch(err => { throw err })
   }
 
   getLayers(active, opacity) {
@@ -117,7 +117,7 @@ class $data {
           zoteroLink: obj.links.alternate.href
         }))
       })
-      .catch(err => {throw err})
+      .catch(err => { throw err })
   }
 
   getZenodoPublications() {
@@ -132,7 +132,7 @@ class $data {
           zenodoLink: obj.links.latest_html
         }))
       })
-      .catch(err => {throw err})
+      .catch(err => { throw err })
   }
 
   getLegend(url) {
@@ -221,7 +221,7 @@ class $data {
       });
   }
 
-  formatOptions = (layerObj) => {
+  formatOptions = (layerObj, isUncertainty) => {
     return {
       maintainAspectRatio: false,
       interaction: {
@@ -246,7 +246,7 @@ class $data {
           offset: true,
           beginAtZero: false,
           ticks: {
-            maxRotation: 0, 
+            maxRotation: 0,
             color: '#fff',
           }
         }
@@ -261,6 +261,13 @@ class $data {
             color: "#fff",
             padding: 20,
             usePointStyle: layerObj.depths.length > 0,
+            filter: (legendItem, data) => {
+              if (isUncertainty) {
+                return legendItem.datasetIndex >= 2;
+              }
+
+              return true;
+            }
           }
         },
         tooltip: {
@@ -274,7 +281,90 @@ class $data {
     }
   }
 
-  formatData = (data, legend, layerObj, isBar) => {
+
+  formatData = (data, legend, layerObj, isBar, isUncertainty) => {
+    if (isUncertainty) {
+      if (layerObj.depths.length > 0) {
+        let lower = {
+          label: 'Lower',
+          borderColor: 'transparent',
+          pointRadius: 0,
+                            borderWidth: 0,
+          backgroundColor: 'transparent',
+          data: []
+        }
+
+        let upper = {
+          label: 'Upper',
+          borderColor: 'rgba(255, 255, 255, 0.2)',
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          pointRadius: 0,
+                            borderWidth: 0,
+          data: [],
+          fill: '-1'
+        }
+
+        let b0cm = {
+          label: '0 - 20cm',
+          usePointStyle: true,
+          borderColor: '#ffffff',
+          backgroundColor: '#ffffff',
+          data: []
+        };
+        let b20cm = {
+          label: '20 - 50cm',
+          usePointStyle: true,
+          borderColor: 'red',
+          backgroundColor: 'red',
+          data: []
+        };
+        let b50cm = {
+          label: '50 - 100cm',
+          usePointStyle: true,
+          borderColor: '#00ff00',
+          backgroundColor: '#00ff00',
+          data: []
+        };
+        let b100cm = {
+          label: '100 - 200cm',
+          usePointStyle: true,
+          borderColor: '#0000ff',
+          backgroundColor: '#0000ff',
+          data: []
+        };
+
+        console.log(data)
+
+        data.map(obj => {
+          lower.data.push(obj.p16);
+          upper.data.push(obj.p84);
+
+          if (obj.layer.indexOf('b0cm..20cm') > -1) {
+            b0cm.data.push(obj.value)
+          }
+
+          if (obj.layer.indexOf('b20cm..50cm') > -1) {
+            b20cm.data.push(obj.value)
+          }
+
+          if (obj.layer.indexOf('b50cm..100cm') > -1) {
+            b50cm.data.push(obj.value)
+          }
+
+          if (obj.layer.indexOf('b100cm..200cm') > -1) {
+            b100cm.data.push(obj.value)
+          }
+        })
+
+        return {
+          labels: layerObj.rangeLabels,
+          datasets: [lower, upper, b0cm, b20cm, b50cm, b100cm]
+        }
+
+      }
+    }
+
+
     if (layerObj.depths.length > 0) {
       let b0cm = {
         label: '0 - 20cm',
@@ -356,7 +446,7 @@ class $data {
           borderWidth: 0,
           categoryPercentage: 1.0,
           borderWidth: 1,
-          fill: true,
+          fill: false,
           tension: 0.1
         }]
       }
@@ -368,7 +458,7 @@ class $data {
     layerObj.range.map((r, i) => {
       data.map((obj) => {
         if (obj.layer.indexOf(r) > -1) {
-          formated.push({x: layerObj.rangeLabels[i], y: obj.value});
+          formated.push({ x: layerObj.rangeLabels[i], y: obj.value });
         }
       })
     });
@@ -385,7 +475,7 @@ class $data {
         borderWidth: 0,
         categoryPercentage: 1.0,
         borderWidth: 1,
-        fill: true,
+        fill: false,
         tension: 0.1,
         spanGaps: true
       }]
