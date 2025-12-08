@@ -22,7 +22,6 @@ import { Vector } from "ol/source";
 import { Point } from "ol/geom";
 window.Cesium = Cesium;
 window.Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwMzgxNTZkOC0wNDlmLTQxNTItODQ3MS01Y2IxNzgwN2NiOTAiLCJpZCI6NTgzMDQsImlhdCI6MTYyMzA3NDkxN30.vONojkn72YI5ZkWjRS11aRvW4YOyyZoU4bkUzwtGKiY';
-// window.Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwNGQ5NTg0Ny03MWRkLTQ1MGEtODA3My02ZGUyYjU1ZDkwZTkiLCJpZCI6MzU1MDUsImlhdCI6MTc2NDY3MTIyMH0.rSIcArn0e7oldVrd1Prc3Z8fgSQj8FKOhsGtnof6Pzo'
 
 function Map(props) {
   const { _3D, base, layer, layer2, vector, time, time2, depth, depth2, opacity, zoom, center, geolocation, layers, layers2, comparison, setState } = useContext(AppContext);
