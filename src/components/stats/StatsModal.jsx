@@ -41,7 +41,7 @@ function StatsModal({ open, onClose }) {
     >
       <DialogTitle className="backdrop-blur" sx={{ background: 'transparent !important' }} color="primary">
         <Stack direction={'row'} alignItems={"center"} justifyContent={"space-between"}>
-          <Typography variant="h6" color="secondary">User Statistics</Typography>
+          <Typography variant="h6" color="secondary">Usage Statistics</Typography>
           <IconButton onClick={onClose} color="secondary"><Close /></IconButton>
         </Stack>
       </DialogTitle>

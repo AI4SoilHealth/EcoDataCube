@@ -121,13 +121,17 @@ class $map {
                 color: 'transparent',
               }),
               stroke: new Stroke({
-                color: '#EB4850',
-                width: 2
+                color: '#000',
+                width: 1
               }),
               text: new Text({
                 text: feature.get('NAME_LATN'),
                 fill: new Fill({
-                  color: '#EB4850'
+                  color: '#000'
+                }),
+                stroke: new Stroke({
+                  color: '#fff',
+                  width: 1
                 }),
                 font: 'bold 14px Calibri,sans-serif',
 
@@ -173,9 +177,10 @@ class $map {
                 color: 'transparent',
               }),
               stroke: new Stroke({
-                color: '#EB4850',
-                width: 2
+                color: '#000',
+                width: 1
               }),
+
             })
 
             return fieldStyleCache[feature.get('id')];
@@ -198,7 +203,7 @@ class $map {
             treeStyleCache[feature.get('id')] = new Style({
               image: new Circle({
                 fill: new Fill({
-                  color: '#EB4850',
+                  color: '#000',
                 }),
                 stroke: new Stroke({
                   color: '#fff',
@@ -229,7 +234,7 @@ class $map {
 
               image: new Circle({
                 fill: new Fill({
-                  color: '#EB4850',
+                  color: '#000',
                 }),
                 stroke: new Stroke({
                   color: '#fff',
@@ -263,8 +268,8 @@ class $map {
             color: 'transparent',
           }),
           stroke: new Stroke({
-            color: '#EB4850',
-            width: 2
+            color: '#000',
+            width: 1
           }),
         })
       })

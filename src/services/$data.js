@@ -17,6 +17,7 @@ class $data {
     return axios.get(URL.LAYERS)
       .then(result => {
         return result.data.map(obj => {
+          console.log(obj.transform_function)
           return [
             new WmsLayer({ ...obj, code: obj.class, defaultActive: active, defaultOpacity: opacity }),
             new WmsLayer({ ...obj, code: obj.class, defaultActive: active, defaultOpacity: opacity, isCompare: true })

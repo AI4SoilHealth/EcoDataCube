@@ -68,7 +68,7 @@ class WmsLayer {
     defaultActive,
     defaultOpacity,
     isCompare,
-    transform_func
+    transform_function
   }) {
     try {
       let gsName = range === null && depth_list === null && var_list === null ? main_url.split('/')[main_url.split('/').length - 1].replace('.tif', '') : srv_path;
@@ -104,7 +104,7 @@ class WmsLayer {
       this.defaultActive = defaultActive === lTitle;
       this.defaultOpacity = defaultOpacity / 100
       this.isVars = Boolean(var_list);
-      this.transformFunction = transform_func ? Function('x', `return ${transform_func}`) : null;
+      this.transformFunction = transform_function ? Function('x', `return ${transform_function}`) : null;
     } catch (error) {
       console.log(error)
     }

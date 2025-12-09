@@ -38,7 +38,8 @@ function Query(props) {
     //   return 
     // });
     try {
-      setData(data.map((obj) => ({ ...obj, value: layerObj.transformFunction(obj.value) })))
+      console.log(data)
+      setData(data.map((obj) => ({ ...obj, value: layerObj.transformFunction(obj.value), p16: layerObj.transformFunction(obj.p16), p84: layerObj.transformFunction(obj.p84) })));
     } catch (error) {
       console.log(error)
       setData(data)
