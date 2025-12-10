@@ -71,7 +71,11 @@ class WmsLayer {
     transform_function
   }) {
     try {
-      let gsName = range === null && depth_list === null && var_list === null ? main_url.split('/')[main_url.split('/').length - 1].replace('.tif', '') : srv_path;
+      if(range === null && depth_list === null && !var_list) {
+        console.log(filename_pattern)
+      }
+      // let gsName = range === null && depth_list === null && var_list === null ? main_url.split('/')[main_url.split('/').length - 1].replace('.tif', '') : srv_path;
+      let gsName = range === null && depth_list === null && !var_list === null ? main_url.split('/')[main_url.split('/').length - 1].replace('.tif', '') : srv_path;
       let lRange = range ? [...new Set(range.split(','))] : [];
       let lTitle = isCompare ? `${title}-2` : title;
       this.id = id;
