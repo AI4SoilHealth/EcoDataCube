@@ -13,7 +13,7 @@ import Stroke from "ol/style/Stroke";
 import Circle from "ol/style/Circle";
 import Text from "ol/style/Text";
 export const cadastreCountries = [
-  "lichtenstein",
+  "liechtenstein",
   "luxembourg",
   "malta",
   "netherlands",
