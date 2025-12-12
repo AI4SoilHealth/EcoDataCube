@@ -3,6 +3,7 @@ import { CircularProgress, Dialog, DialogContent, DialogTitle, IconButton, Linea
 import { useEffect, useState } from "react";
 import StatsMap from "./StatsMap";
 import $data from "../../services/$data";
+import { Link } from "react-router-dom";
 
 function StatsModal({ open, onClose }) {
   const theme = useTheme();
@@ -46,25 +47,28 @@ function StatsModal({ open, onClose }) {
         </Stack>
       </DialogTitle>
       <DialogContent className="backdrop-blur" sx={{ background: 'transparent' }}>
-        <Stack sx={{ minHeight: '400px', width: '100%' }} direction={{xs: "column", sm: 'row'}} alignItems="flex-start" spacing={2}>
-          {loading && <LinearProgress sx={{ textAlign: 'center', width: '100%' }} variant="indeterminate" color="primary" />}
-          {!loading && layer && <>
-            <StatsMap layer={layer} />
+        <Stack spacing={2}>
+          <Typography color="secondary">For EcoDataCube visitors statistics, check <Typography component="a" color="selected" href="https://plausible.earthmonitor.org/ecodatacube.eu" target="_blank">here</Typography></Typography>
+          <Stack sx={{ minHeight: '400px', width: '100%' }} direction={{ xs: "column", sm: 'row' }} alignItems="flex-start" spacing={2}>
+            {loading && <LinearProgress sx={{ textAlign: 'center', width: '100%' }} variant="indeterminate" color="primary" />}
+            {!loading && layer && <>
+              <StatsMap layer={layer} />
 
-            <Stack spacing={1} sx={{ width: {xs: '100%', sm: '30%'} }}>
-              <Typography sx={{ pl: '15px' }} fontWeight="bold" color="secondary">Most Visited Datasets</Typography>
-              <List dense>
-                {stats.map((obj, index) => {
-                  return (
-                    <ListItemButton selected={layer.layer === obj.layer} key={index} onClick={() => { setLayer(obj) }}>
-                      <ListItemText color="secondary" sx={{ '& span, & p': { color: '#fff' }, '&>span': { fontWeight: 'bold !important' } }} primary={obj.layer} secondary={`Number of queries: ${obj.access_count}`}>
-                      </ListItemText>
-                    </ListItemButton>
-                  )
-                })}
-              </List>
-            </Stack>
-          </>}
+              <Stack spacing={1} sx={{ width: { xs: '100%', sm: '30%' } }}>
+                <Typography sx={{ pl: '15px' }} fontWeight="bold" color="secondary">Most Visited Datasets</Typography>
+                <List dense>
+                  {stats.map((obj, index) => {
+                    return (
+                      <ListItemButton selected={layer.layer === obj.layer} key={index} onClick={() => { setLayer(obj) }}>
+                        <ListItemText color="secondary" sx={{ '& span, & p': { color: '#fff' }, '&>span': { fontWeight: 'bold !important' } }} primary={obj.layer} secondary={`Number of queries: ${obj.access_count}`}>
+                        </ListItemText>
+                      </ListItemButton>
+                    )
+                  })}
+                </List>
+              </Stack>
+            </>}
+          </Stack>
         </Stack>
       </DialogContent>
     </Dialog>
