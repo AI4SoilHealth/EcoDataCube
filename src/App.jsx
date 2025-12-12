@@ -40,6 +40,10 @@ const palette = {
   },
 };
 
+import Plausible from 'plausible-tracker'
+
+
+
 function App() {
   const theme = createTheme({
     ...palette, components: {
@@ -74,7 +78,7 @@ function App() {
   });
 
   const getData = async () => {
-   
+
 
     try {
       let total = await $data.getLayers(state.layer, state.opacity);
@@ -207,11 +211,20 @@ function App() {
   }
 
   useEffect(() => {
+    const plausible = Plausible({
+      domain: 'ecodatacube.eu',
+      apiHost: 'https://plausible.earthmonitor.org',
+      trackLocalhost: true,
+      
+    });
+
+    const { enableAutoPageviews } = Plausible();
+    const cleanup = enableAutoPageviews();
     initHotKeys();
     getData();
 
     return () => {
-
+      cleanup();
     }
   }, []);
 
@@ -260,7 +273,7 @@ function App() {
 
               {state.about && <AboutModal open={state.about} setAbout={(bool) => setState(current => ({ ...current, about: bool }))} />}
               {state.credits && <CreditsModal open={state.credits} setCredits={(bool) => setState(current => ({ ...current, credits: bool }))} />}
-              {state.statsModal && <StatsModal open={state.statsModal} onClose={() => setState(current => ({...current, statsModal: false}))} />}
+              {state.statsModal && <StatsModal open={state.statsModal} onClose={() => setState(current => ({ ...current, statsModal: false }))} />}
             </>
           }></Route>
 
