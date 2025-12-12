@@ -40,7 +40,7 @@ const palette = {
   },
 };
 
-import Plausible from 'plausible-tracker'
+// import Plausible from 'plausible-tracker'
 
 
 
@@ -211,20 +211,11 @@ function App() {
   }
 
   useEffect(() => {
-    const plausible = Plausible({
-      domain: 'ecodatacube.eu',
-      apiHost: 'https://plausible.earthmonitor.org',
-      trackLocalhost: true,
-      
-    });
 
-    const { enableAutoPageviews } = Plausible();
-    const cleanup = enableAutoPageviews();
     initHotKeys();
     getData();
 
     return () => {
-      cleanup();
     }
   }, []);
 
