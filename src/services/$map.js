@@ -131,9 +131,9 @@ class $map {
                 }),
                 stroke: new Stroke({
                   color: '#fff',
-                  width: 1
+                  width: 2
                 }),
-                font: 'bold 14px Calibri,sans-serif',
+                font: 'bold 14px monospace,sans-serif',
 
                 justify: 'center'
               })
